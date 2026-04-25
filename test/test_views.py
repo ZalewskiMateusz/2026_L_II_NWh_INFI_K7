@@ -10,7 +10,7 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_outputs(self):
         rv = self.app.get('/outputs')
-        s = str(rv.data)
+        s = rv.data.decode('utf-8')
         self.assertTrue(','.join(SUPPORTED) in s)
 
     def test_msg_with_output(self):
