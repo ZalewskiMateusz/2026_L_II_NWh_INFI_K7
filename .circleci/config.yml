@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    machine:
+      image: ubuntu-2204:current
+    steps:
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: make deps
+      - run: 
+          name: Run linter
+          command: make lint
+      - run: 
+          name: Run tests
+          command: make test
+
+workflows:
+  basic:
+    jobs:
+      - build-and-test
